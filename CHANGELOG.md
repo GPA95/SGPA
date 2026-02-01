@@ -1,9 +1,42 @@
 # 🧾 CHANGELOG
-**Project:** AI-Powered Study Buddy  
-**Repository:** [GPA95/AI_StudyBuddy](https://github.com/GPA95/AI_StudyBuddy)  
-**Last Updated:** 14 November 2025
+**Project:** Study Guide & Personal Assistant  
+**Repository:** [GPA95/SGPA](https://github.com/GPA95/SGPA)  
+**Last Updated:** 1st February 2026
 
-### 🆕 Version 1.1.0 — Major Feature Update (November 2025)
+### 🆕 Version 1.2.0 — Visual + Analytics + UI Refresh (January 2026)
+
+#### ✨ New Features & Improvements
+
+- **Visual Explanations in Explainer**
+  - Explainer responses now include a simple, sketchable diagram idea at the end of each explanation.
+  - Diagrams are described in text so students can quickly draw them in notebooks during revision or exams.
+
+- **Summarizer PDF Handling Fixes**
+  - Added a stronger “short text” guard for PDF summarization.
+  - Clear warning message when extracted text is too short or likely from scanned/image-based PDFs, guiding users to try another file or paste text directly.
+  - Reduces confusing “too short to summarize” loops and improves robustness with real-world PDFs.
+
+- **Lightweight Usage Analytics**
+  - Implemented privacy-friendly interaction logging to a local CSV file.
+  - Each interaction logs timestamp, anonymous session ID, mode (Explainer / Summarizer / Quizzer), sub-mode, PDF usage flag, and prompt/response length.
+  - Enables post-hoc analysis of:
+    - Total interactions
+    - Approximate study sessions
+    - Mode usage distribution
+    - PDF-based study patterns
+
+- **Branding & UI Updates**
+  - Rebranded app in UI to **SGPA – Study Guide & Personal Assistant**.
+  - Added a custom SGPA logo and integrated it into the app header/page icon.
+  - Introduced a custom Streamlit theme (e.g., “Focus Forest” / “Modern Academic”) via `.streamlit/config.toml` for a more polished, student-friendly look.
+
+#### 🛠️ Internal & Maintenance
+
+- Ensured logging is fail-safe (analytics never breaks the app if file writes fail).
+- Normalized asset paths and filenames for reliable deployment on Streamlit Cloud.
+- Cleaned up `.gitignore` and configuration files so theme and analytics behave consistently in both local and cloud environments.
+
+### Version 1.1.0 — Major Feature Update (November 2025)
 
 #### ✨ New Features & Improvements
 
