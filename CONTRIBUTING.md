@@ -1,6 +1,6 @@
-# Contributing to Study Buddy
+# Contributing to SGPA
 
-Thanks for your interest in contributing to **Study Buddy – AI-Powered Study Assistant**!  
+Thanks for your interest in contributing to **Study Guide & Personal Assistant**!  
 This project is maintained by **Ammaar Ahmad Khan (GPA95)** and is open to improvements, bug fixes, and documentation updates.
 
 Please read these guidelines before opening an issue or pull request.
@@ -26,8 +26,8 @@ If you are not sure whether an idea fits, feel free to open a small issue first 
 2. **Clone your fork locally**
 
     ```
-    git clone https://github.com/<your-username>/AI_StudyBuddy.git
-    cd AI_StudyBuddy
+    git clone https://github.com/<your-username>/SGPA.git
+    cd SGPA
     ```
 
 3. **Create a feature branch**
@@ -78,7 +78,7 @@ If you are not sure whether an idea fits, feel free to open a small issue first 
 
 - Go to your fork on GitHub.  
 - Click “Compare & pull request”.  
-- Target: `GPA95/AI_StudyBuddy` → `main`.  
+- Target: `GPA95/SGPA` → `main`.  
 - Clearly describe:
   - What you changed.  
   - Why it improves the project.  
@@ -105,9 +105,9 @@ PRs that do not meet these basics may be closed.
 
 - You are welcome to **fork** this project to learn or create your own version.  
 - If you deploy or publish a derivative project publicly:
-- Keep the license and attribution to **“Study Buddy by Ammaar Ahmad Khan (GPA95)”**.  
+- Keep the license and attribution to **“SGPA by Ammaar Ahmad Khan (GPA95)”**.  
 - Include a link back to the original repository:
- - https://github.com/GPA95/AI_StudyBuddy
+ - https://github.com/GPA95/SGPA
 
 ---
 
