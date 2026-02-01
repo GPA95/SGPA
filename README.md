@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/badge/Language-Python-yellow?logo=python)
 ![IBM SkillsBuild](https://img.shields.io/badge/AICTE%20x%20IBM-SkillsBuild%20Internship-orange?logo=ibm)
 ![Status](https://img.shields.io/badge/Status-Deployed-brightgreen)
-![Version](https://img.shields.io/badge/version-1.1.0-purple)
+![Version](https://img.shields.io/badge/version-1.2.0-purple)
 
 ---
 
@@ -31,6 +31,14 @@ Combines **Streamlit** for UI and **Gemini 2.5 Flash API** for fast, intelligent
 
 ---
 
+Recent updates (v1.2.0):
+
+- Explainer now suggests simple sketchable diagrams for visual understanding.
+- Summarizer handles very short or scanned PDFs more safely with clearer warnings.
+- Added lightweight, privacy-friendly usage analytics (anonymous sessions and mode usage).
+
+---
+
 ## ⚙️ **System Design**
 
 ### 🏗️ **Architecture**
@@ -46,7 +54,8 @@ All secrets managed safely via `.env` and `st.secrets`.
 | 🧩 **Quizzer**        | Quiz generator, solver, evaluator (multi-mode workflow)       | MCQs, solve/evaluate Q&As     |
 
 Other Features:
-- 📂 PDF upload (PyPDF2 extraction)
+- 📂 PDF upload (PyPDF2 extraction, with guards for very short/empty text)
+- 📊 Lightweight usage logging for sessions and mode usage (CSV-based, privacy-friendly)
 - 💬 Real-time chat interface
 - 🔄 New chat/reset option
 - ☁️ Deployed on Streamlit Cloud
@@ -109,11 +118,11 @@ You can keep the PDF as the detailed reference and mirror a concise, in-README g
 
 - **Explainer**:  
   Type your concept or question (e.g., “Explain paging in OS for exams”).  
-  SGPA returns a simple, exam-oriented explanation.
+  SGPA returns a simple, exam-oriented explanation, plus an idea for a quick diagram you can sketch.
 
 - **Summarizer**:  
   Upload a PDF or paste notes.  
-  Choose the summary style (concise / detailed / bullet points) if enabled and generate a summary.
+  SGPA returns an exam-ready summary with headings, bullets, and practice questions.
 
 - **Quizzer**:  
   - Use “Generate Questions” for practice questions with an answer key.  
