@@ -1,8 +1,11 @@
+import streamlit as st
 from utils.gemini_helper import generate_response
+from core.ai_utils import get_visuals_instruction
 
 def summarize_text(text: str, previous_context: str = "", user_focus: str = "", extra_instruction: str = "") -> str:
     """
     Summarize study materials, aligning output for exam preparation if requested.
+    Optionally includes instructions for text-based visuals if enabled in sidebar.
 
     Notes:
     - Keeps backwards compatibility with existing callers that pass `previous_context` or `user_focus`.
@@ -20,6 +23,10 @@ def summarize_text(text: str, previous_context: str = "", user_focus: str = "", 
     # Prefer extra_instruction, fall back to user_focus (keeps compatibility)
     instruction = extra_instruction.strip() if extra_instruction else user_focus.strip()
 
+    visuals_block = ""
+    if st.session_state.get("include_visuals", True):
+        visuals_block = "\n" + get_visuals_instruction()
+
     prompt = f"""
 You are Study Buddy, an academic summary AI.
 
@@ -35,10 +42,9 @@ If the user gives extra instructions (below), adapt output accordingly (e.g., "f
 {instruction}
 
 Reference prior chat context if relevant:
-{previous_context}
+{previous_context}{visuals_block}
 
 Content:
 {text}
 """
     return generate_response(prompt.strip())
-# ...existing code...

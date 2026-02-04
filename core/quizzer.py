@@ -1,9 +1,19 @@
+import streamlit as st
 from utils.gemini_helper import generate_response
+from core.ai_utils import get_visuals_instruction
 
 def generate_questions(text: str, previous_context: str = "") -> str:
     """
     Generate a quiz. Show hints if helpful. Answers listed at end as an answer key.
+    Optionally includes instructions for a summary table if enabled in sidebar.
     """
+    visuals_block = ""
+    if st.session_state.get("include_visuals", True):
+        visuals_block = (
+            "\n- After the Answer Key, optionally add a small table with columns: "
+            "[Subtopic | Difficulty | Key Concept]. Keep it compact (max 5-6 rows)."
+        )
+    
     prompt = f"""
 You are Study Buddy, an academic quiz generator.
 
@@ -19,7 +29,7 @@ Instructions:
 - Do NOT show the correct answer right after each question.
 - Instead, after ALL questions, provide a numbered "Answer Key" listing each answer (e.g., "1. B", "2. True", "3. Photosynthesis", ...).
 - Number every question and answer for clarity.
-- Format so the student can attempt first, then check answers.
+- Format so the student can attempt first, then check answers.{visuals_block}
 """
     return generate_response(prompt.strip())
 
@@ -49,7 +59,15 @@ Instructions:
 def evaluate_answers(questions: str, user_answers: str, previous_context: str = "") -> str:
     """
     Evaluate user's answers; feedback, scores, and tips.
+    Optionally includes instructions for a compact evaluation table if enabled in sidebar.
     """
+    visuals_block = ""
+    if st.session_state.get("include_visuals", True):
+        visuals_block = (
+            "\n- After detailed feedback, optionally add a compact summary table with columns: "
+            "[Q# | Marks | Score | Feedback]. Keep it brief."
+        )
+    
     prompt = f"""
 You are Study Buddy, an answer evaluator.
 
@@ -63,10 +81,10 @@ Recent chat:
 {previous_context}
 
 Instructions:
-- For each answer, indicate if it’s correct/incorrect.
+- For each answer, indicate if it's correct/incorrect.
 - Give specific suggestions for improvement, point out missing facts/examples if relevant.
 - Assign a score out of the maximum possible (e.g., 1 mark, 3 marks, etc.)—be detailed.
 - Summarize overall strengths and improvement areas.
-- Use numbered feedback, concise language.
+- Use numbered feedback, concise language.{visuals_block}
 """
     return generate_response(prompt.strip())

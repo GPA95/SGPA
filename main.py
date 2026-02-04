@@ -17,6 +17,7 @@ if "user_focus" not in st.session_state:
 selected_mode, selected_sub_mode = sidebar_ui()
 
 # Header
+
 st.title("Study Guide & Personal Assistant")
 
 # PDF Handler (optional upload)
