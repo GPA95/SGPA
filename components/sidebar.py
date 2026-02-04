@@ -3,11 +3,10 @@ import time
 def sidebar_ui():
     """Sidebar with mode and Quizzer sub-mode selectors, and core controls."""
 
-    st.sidebar.image("assets/sgpa_logo.png")
+    st.sidebar.image("assets/sgpa_logo.png", width=50)
 
     # API/info
-    st.sidebar.markdown("### API Model")
-    st.sidebar.info("**Gemini 2.5 Flash**")
+    #st.sidebar.markdown("### API Model")
 
     # Mode selection
     st.sidebar.markdown("### 🧩 Choose Mode")
@@ -30,7 +29,17 @@ def sidebar_ui():
             ],
             index=0
         )
+    
+    # Visuals toggle
+    st.sidebar.markdown("### 📊 Visuals")
+    if "include_visuals" not in st.session_state:
+        st.session_state.include_visuals = False
+    st.session_state.include_visuals = st.sidebar.checkbox(
+        "Include visuals when helpful",
+        value=st.session_state.include_visuals
+    )
 
+    # New chat button
     if st.sidebar.button("🆕 New Chat"):
         st.session_state.messages = []
         # Success message that auto-disappears after 2 seconds

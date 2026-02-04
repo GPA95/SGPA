@@ -101,13 +101,14 @@ def chat_ui(selected_mode, selected_sub_mode=None):
             response_placeholder.markdown(assistant_response)
             st.code(assistant_response, language="markdown")
 
-            # Log usage
+            # Log usage with visual tracking
             log_usage(
                 mode=selected_mode,
                 sub_mode=selected_sub_mode,
                 had_pdf=("pdf" in (previous_context or "").lower()),
                 prompt_text=prompt,
                 response_text=assistant_response,
+                visuals_enabled=st.session_state.get("include_visuals", False),
             )
             
             # Feedback buttons            
