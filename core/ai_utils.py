@@ -2,14 +2,13 @@
 #Handles API selection, loading keys, and LLM initialization.
 import os
 from dotenv import load_dotenv
-from openai import OpenAI
 import google.generativeai as genai
 
 load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-def get_llm_client(api_choice="OpenAI"):
+def get_llm_client(api_choice="Gemini"):
     """Initialize and return LLM client based on user choice."""
     if api_choice == "Gemini":
         if not GEMINI_API_KEY:
@@ -17,7 +16,7 @@ def get_llm_client(api_choice="OpenAI"):
         genai.configure(api_key=GEMINI_API_KEY)
         return genai, "Gemini"
     else:
-        raise ValueError("Invalid API choice. Use 'OpenAI' or 'Gemini'.")
+        raise ValueError("Invalid API choice. Use 'Gemini'.")
 
 print("\n🔑 Gemini key loaded:", bool(os.getenv("GEMINI_API_KEY")))
 print(os.getenv("GEMINI_API_KEY"))
