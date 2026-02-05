@@ -10,7 +10,7 @@ def sidebar_ui():
 
     # Mode selection
     st.sidebar.markdown("### 🧩 Choose Mode")
-    mode = st.sidebar.radio(
+    mode = st.sidebar.selectbox(
         "Select a core function:",
         ["💡 Explainer", "📰 Summarizer", "🧩 Quizzer"],
         index=0
@@ -20,7 +20,7 @@ def sidebar_ui():
     sub_mode = None
     if mode == "🧩 Quizzer":
         st.sidebar.markdown("### ✨ Quizzer Action")
-        sub_mode = st.sidebar.radio(
+        sub_mode = st.sidebar.selectbox(
             "Choose Quizzer action:",
             [
                 "📝 Generate Questions",
